@@ -1,3 +1,14 @@
+## Environment Variables
+
+Create a `.env` file in the project root to set environment variables
+
+Example:
+
+```env
+BACKEND_URL=http://localhost:8080
+```
+
+You can copy `.env.example` to `.env` and fill in your values.
 # Car Management & Fuel Tracking System
 
 ## Overview
