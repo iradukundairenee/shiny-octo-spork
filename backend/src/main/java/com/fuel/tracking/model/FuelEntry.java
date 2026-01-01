@@ -1,0 +1,22 @@
+package com.fuel.tracking.model;
+
+public class FuelEntry {
+    private double liters;
+    private double price;
+    private long odometer;
+
+    public FuelEntry() {}
+
+    public FuelEntry(double liters, double price, long odometer) {
+        this.liters = liters;
+        this.price = price;
+        this.odometer = odometer;
+    }
+
+    public double getLiters() { return liters; }
+    public void setLiters(double liters) { this.liters = liters; }
+    public double getPrice() { return price; }
+    public void setPrice(double price) { this.price = price; }
+    public long getOdometer() { return odometer; }
+    public void setOdometer(long odometer) { this.odometer = odometer; }
+}
