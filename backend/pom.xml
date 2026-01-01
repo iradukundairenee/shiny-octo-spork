@@ -9,7 +9,7 @@
     <name>Fuel Tracking Backend</name>
     <description>Spring Boot backend for fuel tracking</description>
     <properties>
-        <java.version>17</java.version>
+        <java.version>21</java.version>
         <spring-boot.version>3.2.0</spring-boot.version>
     </properties>
     <parent>
