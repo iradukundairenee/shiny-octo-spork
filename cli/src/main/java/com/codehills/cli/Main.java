@@ -5,9 +5,28 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.Scanner;
+import io.github.cdimascio.dotenv.Dotenv;
 
 public class Main {
-    private static final String BASE_URL = "http://localhost:8080/api";
+    private static final String BASE_URL;
+    static {
+        String url = null;
+        try {
+            Dotenv dotenv = Dotenv.configure()
+                .ignoreIfMalformed()
+                .ignoreIfMissing()
+                .load();
+            url = dotenv.get("BACKEND_URL");
+        } catch (Exception ignored) {}
+        if (url == null || url.isBlank()) {
+            url = System.getenv("BACKEND_URL");
+        }
+        if (url == null || url.isBlank()) {
+            System.err.println("Error: BACKEND_URL is not set in .env or environment variables.");
+            System.exit(1);
+        }
+        BASE_URL = url.endsWith("/api") ? url : url + "/api";
+    }
     private static final HttpClient client = HttpClient.newHttpClient();
     private static final Scanner scanner = new Scanner(System.in);
 

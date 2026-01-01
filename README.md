@@ -77,7 +77,7 @@ finalcar/
    ```
 3. **(Optional) Call the servlet directly:**
    ```sh
-   curl "http://localhost:8080/servlet/fuel-stats?carId=1"
+  curl "$BACKEND_URL/servlet/fuel-stats?carId=1"
    ```
 
 ---
@@ -87,11 +87,8 @@ finalcar/
 
 To run the CLI client, use the provided script from the project root:
 
-```bash
-./run-cli.sh [arguments]
-```
 
-If you are in the `cli/` directory, use:
+To run the CLI client, use the following command from the `cli/` directory:
 
 ```bash
 ../run-cli.sh [arguments]

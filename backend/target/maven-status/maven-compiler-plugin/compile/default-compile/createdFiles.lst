@@ -1,0 +1,14 @@
+com/fuel/tracking/repository/FuelEntryRepository.class
+com/fuel/tracking/model/FuelEntry.class
+com/fuel/tracking/dto/CreateCarRequest.class
+com/fuel/tracking/repository/CarRepository.class
+com/fuel/tracking/BackendApplication.class
+com/fuel/tracking/dto/CarResponse.class
+com/fuel/tracking/exception/ResourceNotFoundException.class
+com/fuel/tracking/mapper/CarMapper.class
+com/fuel/tracking/service/CarService$FuelStats.class
+com/fuel/tracking/service/CarService.class
+com/fuel/tracking/model/Car.class
+com/fuel/tracking/handler/GlobalExceptionHandler.class
+com/fuel/tracking/controller/CarController.class
+com/fuel/tracking/servlet/FuelStatsServlet.class
