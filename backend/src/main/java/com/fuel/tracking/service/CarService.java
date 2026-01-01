@@ -1,5 +1,8 @@
 
+
+
 package com.fuel.tracking.service;
+import org.springframework.stereotype.Service;
 
 import com.fuel.tracking.model.Car;
 import com.fuel.tracking.model.FuelEntry;
@@ -12,6 +15,7 @@ import com.fuel.tracking.exception.ResourceNotFoundException;
 // Ensure that Spring Boot dependencies are included in your build file (pom.xml or build.gradle)
 import java.util.List;
 import java.util.stream.Collectors;
+@Service
 public class CarService {
     private final CarRepository carRepository;
     private final FuelEntryRepository fuelEntryRepository;

@@ -84,7 +84,8 @@ finalcar/
    ```
 2. **Build and run the CLI:**
    ```sh
-   ./run-cli.sh [arguments]
+   cd cli
+   ../run-cli.sh
    ```
 3. **(Optional) Call the servlet directly:**
    ```sh
