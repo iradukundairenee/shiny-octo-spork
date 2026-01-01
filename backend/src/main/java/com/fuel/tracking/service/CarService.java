@@ -1,4 +1,8 @@
+
+
+
 package com.fuel.tracking.service;
+import org.springframework.stereotype.Service;
 
 import com.fuel.tracking.model.Car;
 import com.fuel.tracking.model.FuelEntry;
@@ -8,17 +12,18 @@ import com.fuel.tracking.dto.CarResponse;
 import com.fuel.tracking.dto.CreateCarRequest;
 import com.fuel.tracking.mapper.CarMapper;
 import com.fuel.tracking.exception.ResourceNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+// Ensure that Spring Boot dependencies are included in your build file (pom.xml or build.gradle)
 import java.util.List;
 import java.util.stream.Collectors;
-
 @Service
 public class CarService {
-    @Autowired
-    private CarRepository carRepository;
-    @Autowired
-    private FuelEntryRepository fuelEntryRepository;
+    private final CarRepository carRepository;
+    private final FuelEntryRepository fuelEntryRepository;
+
+    public CarService(CarRepository carRepository, FuelEntryRepository fuelEntryRepository) {
+        this.carRepository = carRepository;
+        this.fuelEntryRepository = fuelEntryRepository;
+    }
 
     public List<CarResponse> getAllCars() {
         return carRepository.findAll().stream()
@@ -33,7 +38,7 @@ public class CarService {
     }
 
     public CarResponse saveCar(CreateCarRequest request) {
-        // Validate required fields
+
         if (request.getBrand() == null || request.getBrand().isEmpty() ||
             request.getModel() == null || request.getModel().isEmpty() ||
             request.getYear() == 0) {
@@ -46,8 +51,8 @@ public class CarService {
 
 
     public FuelEntry addFuelEntryAndReturn(Long carId, double liters, double price, long odometer) {
-        Car car = carRepository.findById(carId)
-                .orElseThrow(() -> new ResourceNotFoundException("Car not found with id: " + carId));
+        carRepository.findById(carId)
+            .orElseThrow(() -> new ResourceNotFoundException("Car not found with id: " + carId));
         FuelEntry entry = new FuelEntry(liters, price, odometer);
         fuelEntryRepository.addFuelEntry(carId, entry);
         return entry;
@@ -55,7 +60,7 @@ public class CarService {
 
     public List<FuelEntry> getFuelEntries(Long carId) {
         carRepository.findById(carId)
-                .orElseThrow(() -> new ResourceNotFoundException("Car not found with id: " + carId));
+            .orElseThrow(() -> new ResourceNotFoundException("Car not found with id: " + carId));
         return fuelEntryRepository.getFuelEntries(carId);
     }
 

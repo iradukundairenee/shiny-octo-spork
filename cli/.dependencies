@@ -1,0 +1,2 @@
+# dotenv-java for reading .env in Java
+io.github.cdimascio:dotenv-java:3.0.0

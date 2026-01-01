@@ -1,6 +1,32 @@
+
+
 # Car Management & Fuel Tracking System
 
+## Requirements
+
+- Java 17 or higher (Java 21 recommended)
+- Spring Boot 3.2.0 (used in backend)
+
+
+## Environment Variables
+
+Create a `.env` file in the project root to set environment variables
+
+Example:
+
+```env
+BACKEND_URL=http://localhost:8080
+```
+
+You can copy `.env.example` to `.env` and fill in your values.
+
 ## Overview
+
+This system allows users to:
+- Register cars with brand, model, and year
+- Track fuel consumption by adding fuel entries
+- View calculated fuel statistics (total fuel, cost, average consumption)
+
 This project is a full-stack Java solution for car management and fuel tracking, designed as a technical assignment. It demonstrates:
 - A Spring Boot backend with in-memory storage (no database)
 - A manual Java Servlet for fuel stats
@@ -43,7 +69,7 @@ finalcar/
 ---
 
 ## CLI Features
-- **Standalone Java app** (no Spring, no database)
+- **Standalone Java app** (CLI: no Spring, no database; backend: Spring Boot, in-memory storage)
 - Uses `java.net.http.HttpClient` to call backend endpoints
 - **Commands:**
   - `create-car`   - Register a car
@@ -69,15 +95,22 @@ finalcar/
 1. **Start the backend:**
    ```sh
    cd backend
+  # If you don't have Maven installed:
+  brew install maven
+  # See https://maven.apache.org/install.html for other OS instructions
    mvn spring-boot:run
    ```
 2. **Build and run the CLI:**
    ```sh
-   ./run-cli.sh [arguments]
+   cd cli
+  # If you don't have Maven installed:
+  brew install maven
+  # See https://maven.apache.org/install.html for other OS instructions
+   ../run-cli.sh
    ```
 3. **(Optional) Call the servlet directly:**
    ```sh
-   curl "http://localhost:8080/servlet/fuel-stats?carId=1"
+  curl "$BACKEND_URL/servlet/fuel-stats?carId=1"
    ```
 
 ---
@@ -87,11 +120,8 @@ finalcar/
 
 To run the CLI client, use the provided script from the project root:
 
-```bash
-./run-cli.sh [arguments]
-```
 
-If you are in the `cli/` directory, use:
+To run the CLI client, use the following command from the `cli/` directory:
 
 ```bash
 ../run-cli.sh [arguments]
